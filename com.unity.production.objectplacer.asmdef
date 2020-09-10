@@ -2,7 +2,9 @@
     "name": "com.unity.production.objectplacer",
     "references": [],
     "includePlatforms": [
-        "Editor"
+        "Editor",
+        "WindowsStandalone32",
+        "WindowsStandalone64"
     ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

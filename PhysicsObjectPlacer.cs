@@ -1,4 +1,5 @@
 ﻿
+//#if UNITY_EDITOR
 
 using System.Collections;
 using System.Collections.Generic;
@@ -55,10 +56,11 @@ public class PhysicsObjectPlacer : MonoBehaviour
         }
         Timer = SpawnTime;
 
-        //DragAndDropObjects.Clear();
+        DragAndDropObjects = new List<GameObject>();
+        DragAndDropObjects.Clear();
     }
 
-#if UNITY_EDITOR
+
     private void OnDestroy()
     {
         if (Tools.current == Tool.Custom)
@@ -66,7 +68,7 @@ public class PhysicsObjectPlacer : MonoBehaviour
             Tools.current = Tool.None;
         }
     }
-#endif
+
 
     void Update()
     {
@@ -462,3 +464,4 @@ public class PhysicsObjectPlacer : MonoBehaviour
     }
 }
 
+//#endif
