@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+using System.IO;
+
 [ExecuteInEditMode]
 public class PlaceByProjection : MonoBehaviour
 {
@@ -260,7 +262,19 @@ public class PlaceByProjection : MonoBehaviour
     }
 
 
-    
+    string GetGizmo()
+    {
+        string gizmoPath = "IconProjection";
+
+        string packagePath = "Packages/com.unity.production.objectplacer";
+
+        if (Directory.Exists(Path.GetFullPath(packagePath)))
+        {
+            gizmoPath = string.Format("{0}/Gizmos/{1}.png", packagePath, gizmoPath);
+        }
+
+        return gizmoPath;
+    }
 
     private void OnDrawGizmos()
     {
@@ -287,7 +301,8 @@ public class PlaceByProjection : MonoBehaviour
         Gizmos.matrix = transform.localToWorldMatrix;
         Gizmos.DrawWireCube(Vector3.zero, new Vector3(ProjectionSize.x, 0, ProjectionSize.y));
 
-        Gizmos.DrawIcon(transform.position, "IconProjection");
+        //Gizmos.DrawIcon(transform.position, "IconProjection");
+        Gizmos.DrawIcon(transform.position, GetGizmo());
 
 
     }

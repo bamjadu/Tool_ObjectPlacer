@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.EditorTools;
 
-
+using System.IO;
 
 //[System.Serializable]
 [ExecuteInEditMode]
@@ -287,13 +287,31 @@ public class PhysicsObjectPlacer : MonoBehaviour
         }
     }
 
-    
+
+
+    string GetGizmo()
+    {
+        string gizmoPath = "IconPlacement";
+
+        string packagePath = "Packages/com.unity.production.objectplacer";
+
+        if (Directory.Exists(Path.GetFullPath(packagePath)))
+        {
+            gizmoPath = string.Format("{0}/Gizmos/{1}.png", packagePath, gizmoPath);
+        }
+
+        return gizmoPath;
+    }
+
+
+
 
     private void OnDrawGizmos()
     {
-        
-        Gizmos.DrawIcon(this.transform.position, "IconPlacement");
-        
+
+        //Gizmos.DrawIcon(this.transform.position, "IconPlacement");
+        Gizmos.DrawIcon(this.transform.position, GetGizmo());
+
     }
 
 #endif
