@@ -1,14 +1,17 @@
-﻿using System.Collections;
+﻿
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-#if UNITY_EDITOR
+
 using UnityEditor;
 using UnityEditor.EditorTools;
-#endif
 
+
+
+//[System.Serializable]
 [ExecuteInEditMode]
-[System.Serializable]
 public class PhysicsObjectPlacer : MonoBehaviour
 {
 
@@ -458,3 +461,4 @@ public class PhysicsObjectPlacer : MonoBehaviour
         Debug.Log(meshFilter.Length + " Meshes combined!");
     }
 }
+
